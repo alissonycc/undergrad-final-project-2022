@@ -23,11 +23,22 @@ def label(predicted):
     elif predicted == 6:
         return 'Neutral'
 
+def biggest_face(faces):
+    current = 0
+    retorno = []
+    for (x, y, z, w) in faces:
+        total = x + y + z + w
+        if total > current:
+            current = total
+            retorno = [x, y, z, w]
+    return retorno
+
+
 cascPath = "haarcascade_frontalface_default.xml"
 faceCascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 video_capture = cv2.VideoCapture(0)
 
-model = keras.models.load_model("model.h5")
+model = keras.models.load_model("modelx.h5")
 
 while True:
     # Capture frame-by-frame
@@ -38,13 +49,20 @@ while True:
 
     faces = faceCascade.detectMultiScale(
         gray,
-        scaleFactor=1.2,
-        minNeighbors=5,
+        scaleFactor=1.1,
+        minNeighbors=7,
         minSize=(30, 30)
     )
 
     # Draw a rectangle around the faces
-    for (x, y, w, h) in faces:
+    face = biggest_face(faces)
+    #for (x, y, w, h) in face:
+    if face:
+        x = face[0]
+        y = face[1]
+        w = face[2]
+        h = face[3]
+
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
         img = frame[y:y+h, x:x+w]
 
@@ -55,8 +73,6 @@ while True:
         pred = model.predict(img)
         predicted = np.argmax(pred)
         labelOutput = label(predicted)
-        print(labelOutput)
-
 
         font                   = cv2.FONT_HERSHEY_SIMPLEX
         bottomLeftCornerOfText = (10,30)
