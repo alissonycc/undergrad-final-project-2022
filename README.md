@@ -13,4 +13,6 @@ visualized by the user inside its folders), and later serve as the input for
 the machine learning model.
 
 ### TODO
-- Add Architecture picture
+- [] Add Architecture picture
+- [] Add model evaluation
+- [] Add support for live evalution of emations using OpenCV
