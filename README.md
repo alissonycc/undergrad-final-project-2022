@@ -13,10 +13,10 @@ visualized by the user inside its folders), and later serve as the input for
 the machine learning model.
 
 # Sample Images from TestSet
-![Sample](imgs/sample.png)
+![Sample](imgs/sample.jpg)
 
 # Results from the model
-![Results](imgs/output.png)
+![Results](imgs/output.jpg)
 
 ### TODO
 - [ ] Add Architecture picture
