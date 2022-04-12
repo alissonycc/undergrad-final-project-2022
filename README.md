@@ -19,7 +19,7 @@ visualized by the user inside its folders), and later serve as the input for the
 ![Sample](imgs/sample.jpg)
 
 # Architecture of the model
-![ModelArch](imgs/model_plot.png)
+![ModelArch](imgs/model_plot.jpg)
 
 # Results of the model
 ![Results](imgs/output.jpg)
