@@ -16,4 +16,7 @@ code:
 evaluate:
 	jupyter nbconvert --to notebook --inplace --execute evaluate.ipynb
 
-all: install download unzip transform code evaluate
+run: install download unzip transform code evaluate
+
+cam:
+	python3 facial_detection/webcam.py
